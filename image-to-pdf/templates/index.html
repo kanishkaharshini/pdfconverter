@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to PDF Converter</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">ImgToPDF</span>
+      </div>
+      <p class="tagline">Convert JPG, PNG, GIF, BMP to PDF — free, fast, beautiful</p>
+    </header>
+
+    <!-- Drop Zone -->
+    <div class="drop-zone" id="dropZone">
+      <div class="drop-icon">
+        <svg width="48" height="48" fill="none" viewBox="0 0 48 48">
+          <rect width="48" height="48" rx="12" fill="rgba(167,139,250,0.12)"/>
+          <path d="M24 14v12M24 14l-4 4M24 14l4 4" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14 30v4h20v-4" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p class="drop-title">Drag & drop your images here</p>
+      <p class="drop-sub">or <label for="fileInput" class="browse-link">browse files</label></p>
+      <p class="drop-formats">JPG · PNG · GIF · BMP · WEBP</p>
+      <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.gif,.bmp,.webp" multiple hidden>
+    </div>
+
+    <!-- Preview Grid -->
+    <div class="preview-section" id="previewSection" style="display:none">
+      <div class="preview-header">
+        <span id="fileCount">0 images selected</span>
+        <button class="btn-clear" id="clearBtn">Clear all</button>
+      </div>
+      <div class="preview-grid" id="previewGrid"></div>
+    </div>
+
+    <!-- Options Panel -->
+    <div class="options-panel" id="optionsPanel" style="display:none">
+      <h3>PDF Options</h3>
+      <div class="options-grid">
+        <div class="option-group">
+          <label>Page size</label>
+          <select id="pageSize">
+            <option value="a4">A4</option>
+            <option value="letter">Letter (US)</option>
+          </select>
+        </div>
+        <div class="option-group">
+          <label>Orientation</label>
+          <select id="orientation">
+            <option value="portrait">Portrait</option>
+            <option value="landscape">Landscape</option>
+          </select>
+        </div>
+        <div class="option-group">
+          <label>Image fit</label>
+          <select id="fitMode">
+            <option value="fit">Fit (no crop)</option>
+            <option value="fill">Fill page</option>
+            <option value="original">Original size</option>
+          </select>
+        </div>
+        <div class="option-group">
+          <label>Margin (px)</label>
+          <input type="number" id="margin" value="20" min="0" max="80">
+        </div>
+        <div class="option-group">
+          <label>Background</label>
+          <input type="color" id="bgColor" value="#ffffff">
+        </div>
+        <div class="option-group checkbox-group">
+          <label>
+            <input type="checkbox" id="addFilename">
+            Add filename label
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Convert Button -->
+    <button class="btn-convert" id="convertBtn" style="display:none">
+      <span id="btnText">Convert to PDF</span>
+      <span id="btnLoader" style="display:none">
+        <span class="spinner"></span> Converting...
+      </span>
+    </button>
+
+    <!-- Success Message -->
+    <div class="success-msg" id="successMsg" style="display:none">
+      <span>✓</span> PDF downloaded successfully!
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
